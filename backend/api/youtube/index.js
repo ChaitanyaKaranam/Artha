@@ -4,7 +4,7 @@ const axios = require('axios');
 const { YOUTUBE_API_URL, YOUTUBE_MAX_RESULTS } = require('../../config');
 
 router.get('/', (req, res) => {
-    res.send('Welcome to Youtube API')
+    res.send('Artha Youtube API')
 })
 
 router.get('/search', (req, res) => {
