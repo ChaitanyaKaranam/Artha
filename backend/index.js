@@ -3,10 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const api = require('./api');
 const graphQL = require('./graphql');
+const cors = require('cors');
 
 if( process.env.NODE_ENV !== 'production' ) {
     require('dotenv').config();
 }
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
