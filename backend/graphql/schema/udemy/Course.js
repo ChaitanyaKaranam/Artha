@@ -1,6 +1,9 @@
 const { GraphQLInt, GraphQLString, GraphQLObjectType, GraphQLBoolean, GraphQLList, GraphQLFloat } = require('graphql');
+const { UDEMY_API_URL } = require('../../../config');
 const PriceDetails = require('./PriceDetail');
 const Instructor = require('./Instructor');
+const Rating = require('./Rating');
+const axios = require('axios');
 
 module.exports = new GraphQLObjectType({
     name: 'course',
@@ -23,6 +26,15 @@ module.exports = new GraphQLObjectType({
         relevancy_score: { type: GraphQLFloat },
         input_features: { type: GraphQLString },
         lecture_search_result: { type: GraphQLString },
-        headline: { type: GraphQLString }
+        headline: { type: GraphQLString },
+        rating: { 
+            type: Rating,
+            resolve(source) {
+                return axios.get(`${UDEMY_API_URL}/courses/${source.id}?fields[course]=avg_rating_recent,estimated_content_length,num_subscribers`, { 
+                    headers: { Authorization: `Basic ${Buffer.from(`${process.env.UDEMY_CLIENT_ID}:${process.env.UDEMY_CLIENT_PASSWORD}`).toString('base64')}`}}
+                )
+                .then(response => response.data);
+            }
+        }
     }
 })
