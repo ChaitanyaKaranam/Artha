@@ -1,9 +1,11 @@
 const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
+const axios = require('axios');
 const Owner = require('./Owner');
 const License = require('./License');
+const Organization = require('./Organization');
 
 const query = new GraphQLObjectType({
-    name: 'search_github_query',
+    name: 'github',
     fields: {
         items: {
             type: GraphQLList(new GraphQLObjectType({
@@ -81,6 +83,13 @@ const query = new GraphQLObjectType({
                     open_issues: { type: GraphQLInt },
                     watchers: { type: GraphQLInt },
                     default_branch: { type: GraphQLString },
+                    organization: { 
+                        type: Organization,
+                        resolve(source, args){
+                            return axios.get(source.owner.url, { headers: { Authorization: `token ${process.env.GITHUB_API_KEY}`} })
+                                .then(response => response.data);
+                        }
+                    },
                 }
             }))
         }

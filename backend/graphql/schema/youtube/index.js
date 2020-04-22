@@ -2,7 +2,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLInt } = require('g
 const item = require('./item');
 
 const query = new GraphQLObjectType({
-    name: 'search_youtube_query',
+    name: 'youtube',
     fields: {
         kind: { type: GraphQLString },
         etag: { type: GraphQLString },
