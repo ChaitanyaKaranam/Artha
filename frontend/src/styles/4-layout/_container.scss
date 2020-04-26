@@ -22,6 +22,10 @@
    align-self: center;    
 }
 
+.right{
+    justify-self: end;
+}
+
 .section-divider{
     grid-gap: $sectionDivider;
 }
