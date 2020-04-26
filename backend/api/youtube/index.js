@@ -11,7 +11,7 @@ router.get('/search', (req, res) => {
     if(!req.query['q']){
         res.status(400).send('Missing Parameters');
     }
-    axios.get(`${YOUTUBE_API_URL}/search?part=snippet&q=${req.query['q']}%20tutorial&maxResults=${YOUTUBE_MAX_RESULTS}&order=viewCount&key=${process.env.YOUTUBE_API_KEY}`)
+    axios.get(`${YOUTUBE_API_URL}/search?part=snippet&q=${req.query['q']}%20tutorial&type=video&maxResults=${YOUTUBE_MAX_RESULTS}&order=viewCount&key=${process.env.YOUTUBE_API_KEY}`)
         .then(response => {
             res.send(response.data);
         })

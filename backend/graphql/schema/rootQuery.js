@@ -18,7 +18,7 @@ const rootQuery = new GraphQLObjectType({
             type: youtube,
             args: { q : { type: new GraphQLNonNull(GraphQLString) } },
             resolve(parentValue, { q }) {
-                return axios.get(`${YOUTUBE_API_URL}/search?part=snippet&q=${q}%20tutorial&maxResults=${YOUTUBE_MAX_RESULTS}&order=viewCount&key=${process.env.YOUTUBE_API_KEY}`)
+                return axios.get(`${YOUTUBE_API_URL}/search?part=snippet&q=${q}%20tutorial&type=video&maxResults=${YOUTUBE_MAX_RESULTS}&order=viewCount&key=${process.env.YOUTUBE_API_KEY}`)
                     .then(response => {
                         return response.data;
                     })

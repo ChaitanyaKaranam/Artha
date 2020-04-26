@@ -1,0 +1,31 @@
+html{    
+    padding: 2rem;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    margin: 0px;
+}
+
+.heroHeading{
+    font-size: $heroHeading;
+    font-weight: 900;
+}
+
+.input{
+    height: $inputHeight;
+    border-radius: 0.5rem;
+    border: 1px solid $lightGrey;
+    padding-left: 2rem;
+}

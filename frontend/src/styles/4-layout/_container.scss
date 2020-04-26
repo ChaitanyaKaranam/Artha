@@ -1,0 +1,27 @@
+.cover{
+    height: 100%;
+}
+
+.grid{
+    display: grid;
+}
+
+.horizontal-align{
+    justify-items: center;
+}
+
+.horizontal-align-self{
+    justify-self: center;
+}
+
+.vertical-align{
+   align-items: center;    
+}
+
+.vertical-align-self{
+   align-self: center;    
+}
+
+.section-divider{
+    grid-gap: $sectionDivider;
+}

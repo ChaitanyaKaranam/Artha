@@ -1,11 +1,10 @@
 import React from 'react';
-import './App.css';
-import Graph from './components/Graph';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div className="App">
-      <Graph search="react"/>
+    <div className="App cover">
+      <Home/>
     </div>
   );
 }
