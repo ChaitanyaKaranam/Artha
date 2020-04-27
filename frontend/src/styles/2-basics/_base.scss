@@ -32,6 +32,16 @@ ul{
     font-weight: 400;
 }
 
+.sectionHeading{
+    font-size: $sectionHeading;
+    font-weight: 700;
+}
+
+.sectionSubHeading{
+    font-size: $sectionSubHeading;
+    font-weight: 400;
+}
+
 .input{
     height: $inputHeight;
     border-radius: 0.5rem;

@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-app.listen(process.env.PORT, () => console.log(`Backend started on port ${process.env.PORT}`));
+app.listen(process.env.PORT, () => console.log(`Backend started on port ${process.env.PORT} - Environment: ${process.env.NODE_ENV}`));
 
 app.get('/', (req, res) => {
     res.send('Welcome to Artha platform');
