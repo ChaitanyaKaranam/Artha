@@ -16,3 +16,11 @@ export const channelData = async (channelId) => {
 export const searchGithub = async(query) => {
     return await axios.get(`${BACKEND_URL}/api/github/search/repositories?q=${query}`)
 }
+
+export const searchUdemy = async(search) => {
+    return await axios.get(`${BACKEND_URL}/api/udemy/courses?search=${search}`)
+}
+
+export const getRatings = async(id) => {
+    return await axios.get(`${BACKEND_URL}/api/udemy/courses/${id}`)
+}

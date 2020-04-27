@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import useInput from '../hooks/Input';
-import { searchYoutube, videoData, channelData, searchGithub } from '../api';
+import { searchYoutube, videoData, channelData, searchGithub, searchUdemy, getRatings as getCourseRatings } from '../api';
 import FeaturedVideo from '../components/youtube/Featured';
 import YoutubeCard from '../components/youtube/YoutubeCard';
 import RepoCard from '../components/github/RepoCard';
+import CourseCard from '../components/udemy/CourseCard';
 
 const Learn = () => {
     const { id } = useParams();
@@ -17,6 +18,9 @@ const Learn = () => {
             </div>
             <div className="contentSection lightBlue">
                 <Github id={id}/>
+            </div>
+            <div className="contentSection lightBlue">
+                <Udemy id={id}/>
             </div>
         </div>
     )
@@ -174,8 +178,6 @@ const Github = ({ id }) => {
 
         const fetchData = async() => {
             let response = await searchGithub(id);
-            console.log(response);
-
             if(response.data && response.data.items && Array.isArray(response.data.items) && response.data.items.length>0){
                 setGithubData(response.data.items)
             }
@@ -203,6 +205,62 @@ const Github = ({ id }) => {
             <p className="sectionSubHeading">Explore open source projects on {id}</p>
             <div className="repoSection">
                 {renderRepoCards()}
+            </div>
+        </div>
+    )
+}
+
+const Udemy = ({ id }) => {
+
+    const [ udemyData, setUdemyData ] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async() => {
+            let response = await searchUdemy(id);
+            console.log(response.data);
+            if(response.data && response.data.results && Array.isArray(response.data.results)){
+                let data = response.data.results;
+                let index = 0;
+                for (const item of data) {
+                    await getRatings(item['id'], data, index);
+                    index++;
+                }
+                setUdemyData(data);
+            }
+        }
+        fetchData();
+    }, [id])
+
+    async function getRatings(id, data, index){
+        let response = await getCourseRatings(id);
+        data[index]['rating_details'] = response.data;
+        return;
+    }
+
+    function renderCourses(){
+        if(udemyData && Array.isArray(udemyData) && udemyData.length>0){
+            return udemyData.map(({
+                id,
+                image_480x270: thumbnail,
+                title,
+                price,
+                rating_details: {
+                    num_subscribers,
+                    avg_rating_recent
+                },
+                url
+            }) => {
+                return <CourseCard key={id} thumbnail={thumbnail} title={title} price={price} num_subscribers={num_subscribers} avg_rating_recent={avg_rating_recent} onClick={() => { window.open(`https://udemy.com${url}`)}}/>
+            })
+        }
+    }    
+
+    return(
+        <div>
+            <h2 className="sectionHeading">Courses</h2>
+            <p className="sectionSubHeading">Check out some courses on {id} from Udemy</p>
+            <div className="courseSection">
+                {renderCourses()}
             </div>
         </div>
     )

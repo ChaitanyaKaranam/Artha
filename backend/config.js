@@ -1574,6 +1574,742 @@ const TEST_GITHUB_SEARCH_DATA = {
     ]
 }
 
+const TEST_UDEMY_SEARCH_DATA = {
+    "count": 2736,
+    "next": "https://www.udemy.com/api-2.0/courses/?page=2&page_size=10&search=react",
+    "previous": null,
+    "results": [
+        {
+            "_class": "course",
+            "id": 1362070,
+            "title": "React - The Complete Guide (incl Hooks, React Router, Redux)",
+            "url": "/course/react-the-complete-guide-incl-redux/",
+            "is_paid": true,
+            "price": "₹12,160",
+            "price_detail": {
+                "currency": "INR",
+                "currency_symbol": "₹",
+                "amount": 12160,
+                "price_string": "₹12,160"
+            },
+            "price_serve_tracking_id": "9Lxl2i0zR42TvYYV1E-ptg",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "job_title": "Online Education",
+                    "display_name": "Academind by Maximilian Schwarzmüller",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/31926668_94e7_6.jpg",
+                    "name": "Academind by Maximilian",
+                    "title": "Academind by Maximilian Schwarzmüller",
+                    "url": "/user/academind/",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/31926668_94e7_6.jpg",
+                    "initials": "AS"
+                },
+                {
+                    "_class": "user",
+                    "job_title": "Professional Web Developer and Instructor",
+                    "display_name": "Maximilian Schwarzmüller",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/13952972_e853.jpg",
+                    "name": "Maximilian",
+                    "title": "Maximilian Schwarzmüller",
+                    "url": "/user/maximilian-schwarzmuller/",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/13952972_e853.jpg",
+                    "initials": "MS"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/1362070_b9a1_2.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/1362070_b9a1_2.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/1362070_b9a1_2.jpg",
+            "published_title": "react-the-complete-guide-incl-redux",
+            "predictive_score": 5.929254021960543,
+            "relevancy_score": 1421.515,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 705264,
+            "title": "Modern React with Redux [2020 Update]",
+            "url": "/course/react-redux/",
+            "is_paid": true,
+            "price": "₹11,520",
+            "price_detail": {
+                "amount": 11520,
+                "currency": "INR",
+                "price_string": "₹11,520",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "Sn6IvD5TQuOTRCPw5WJbmA",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Stephen Grider",
+                    "name": "Stephen",
+                    "display_name": "Stephen Grider",
+                    "job_title": "Engineering Architect",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/5487312_0554.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/5487312_0554.jpg",
+                    "initials": "SG",
+                    "url": "/user/sgslo/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/705264_caa9_11.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/705264_caa9_11.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/705264_caa9_11.jpg",
+            "published_title": "react-redux",
+            "predictive_score": 5.91006227348309,
+            "relevancy_score": 1423.7947,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Master React v16.6.3 and Redux with React Router, Webpack, and Create-React-App.  Includes Hooks!",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 959700,
+            "title": "The Complete React Native + Hooks Course [2020 Edition]",
+            "url": "/course/the-complete-react-native-and-redux-course/",
+            "is_paid": true,
+            "price": "₹6,080",
+            "price_detail": {
+                "amount": 6080,
+                "currency": "INR",
+                "price_string": "₹6,080",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "l5UGcBj1Tkmp1C3AaWpA5A",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Stephen Grider",
+                    "name": "Stephen",
+                    "display_name": "Stephen Grider",
+                    "job_title": "Engineering Architect",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/5487312_0554.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/5487312_0554.jpg",
+                    "initials": "SG",
+                    "url": "/user/sgslo/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/959700_8bd2_11.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/959700_8bd2_11.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/959700_8bd2_11.jpg",
+            "published_title": "the-complete-react-native-and-redux-course",
+            "predictive_score": 5.815757814778031,
+            "relevancy_score": 1423.2109,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Understand React Native with Hooks, Context, and React Navigation.",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 1286908,
+            "title": "The Complete React Developer Course (w/ Hooks and Redux)",
+            "url": "/course/react-2nd-edition/",
+            "is_paid": true,
+            "price": "₹6,400",
+            "price_detail": {
+                "amount": 6400,
+                "currency": "INR",
+                "price_string": "₹6,400",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "At4q0jS9SIaF6xlEZZFIng",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Andrew Mead",
+                    "name": "Andrew",
+                    "display_name": "Andrew Mead",
+                    "job_title": "A Full-stack Developer & Teacher",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/7231684_bc0d_4.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/7231684_bc0d_4.jpg",
+                    "initials": "AM",
+                    "url": "/user/andrewmead/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/1286908_1773_5.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/1286908_1773_5.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/1286908_1773_5.jpg",
+            "published_title": "react-2nd-edition",
+            "predictive_score": 5.740950737426506,
+            "relevancy_score": 1419.5931,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Learn how to build and launch React web applications using React, Redux, Webpack, React-Router, and more!",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 1254420,
+            "title": "Node with React: Fullstack Web Development",
+            "url": "/course/node-with-react-fullstack-web-development/",
+            "is_paid": true,
+            "price": "₹11,520",
+            "price_detail": {
+                "amount": 11520,
+                "currency": "INR",
+                "price_string": "₹11,520",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "ZS9kQivtSraeVeUiFGg7CQ",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Stephen Grider",
+                    "name": "Stephen",
+                    "display_name": "Stephen Grider",
+                    "job_title": "Engineering Architect",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/5487312_0554.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/5487312_0554.jpg",
+                    "initials": "SG",
+                    "url": "/user/sgslo/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/1254420_f6cb_4.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/1254420_f6cb_4.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/1254420_f6cb_4.jpg",
+            "published_title": "node-with-react-fullstack-web-development",
+            "predictive_score": 5.69943028291591,
+            "relevancy_score": 1398.037,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Build and deploy fullstack web apps with NodeJS, React, Redux, Express, and MongoDB.",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 1436092,
+            "title": "React Native - The Practical Guide 2020",
+            "url": "/course/react-native-the-practical-guide/",
+            "is_paid": true,
+            "price": "₹10,880",
+            "price_detail": {
+                "amount": 10880,
+                "currency": "INR",
+                "price_string": "₹10,880",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "HRH-3DH6SpixHyLNqezmDg",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Academind by Maximilian Schwarzmüller",
+                    "name": "Academind by Maximilian",
+                    "display_name": "Academind by Maximilian Schwarzmüller",
+                    "job_title": "Online Education",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/31926668_94e7_6.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/31926668_94e7_6.jpg",
+                    "initials": "AS",
+                    "url": "/user/academind/"
+                },
+                {
+                    "_class": "user",
+                    "title": "Maximilian Schwarzmüller",
+                    "name": "Maximilian",
+                    "display_name": "Maximilian Schwarzmüller",
+                    "job_title": "Professional Web Developer and Instructor",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/13952972_e853.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/13952972_e853.jpg",
+                    "initials": "MS",
+                    "url": "/user/maximilian-schwarzmuller/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/1436092_2024_4.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/1436092_2024_4.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/1436092_2024_4.jpg",
+            "published_title": "react-native-the-practical-guide",
+            "predictive_score": 5.6916080386319745,
+            "relevancy_score": 1404.16,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Use React Native and your React knowledge and take your web development skills to build native iOS and Android Apps",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 781532,
+            "title": "Advanced React and Redux",
+            "url": "/course/react-redux-tutorial/",
+            "is_paid": true,
+            "price": "₹8,960",
+            "price_detail": {
+                "amount": 8960,
+                "currency": "INR",
+                "price_string": "₹8,960",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "r7UuZpxwS7-9A54f4IijCQ",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Stephen Grider",
+                    "name": "Stephen",
+                    "display_name": "Stephen Grider",
+                    "job_title": "Engineering Architect",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/5487312_0554.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/5487312_0554.jpg",
+                    "initials": "SG",
+                    "url": "/user/sgslo/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/781532_8b4d_6.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/781532_8b4d_6.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/781532_8b4d_6.jpg",
+            "published_title": "react-redux-tutorial",
+            "predictive_score": 5.663306269481737,
+            "relevancy_score": 1400.1002,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Detailed walkthroughs on advanced React and Redux concepts - Authentication, Testing, Middlewares, HOC's, and Deployment",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 2365628,
+            "title": "Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL)",
+            "url": "/course/complete-react-developer-zero-to-mastery/",
+            "is_paid": true,
+            "price": "₹12,800",
+            "price_detail": {
+                "amount": 12800,
+                "currency": "INR",
+                "price_string": "₹12,800",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "uFoONrCVTYqUfmWQzDjsAQ",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Andrei Neagoie",
+                    "name": "Andrei",
+                    "display_name": "Andrei Neagoie",
+                    "job_title": "Senior Software Developer turned Instructor",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/38516954_b11c_3.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/38516954_b11c_3.jpg",
+                    "initials": "AN",
+                    "url": "/user/andrei-neagoie/"
+                },
+                {
+                    "_class": "user",
+                    "title": "Yihua Zhang",
+                    "name": "Yihua",
+                    "display_name": "Yihua Zhang",
+                    "job_title": "Senior Software Developer",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/66986824_43c4.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/66986824_43c4.jpg",
+                    "initials": "YZ",
+                    "url": "/user/yihua-zhang-5/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/2365628_0b60_7.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/2365628_0b60_7.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/2365628_0b60_7.jpg",
+            "published_title": "complete-react-developer-zero-to-mastery",
+            "predictive_score": 5.600646058587747,
+            "relevancy_score": 1386.7921,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Become a Senior React Developer! Build a massive E-commerce app with Redux, Hooks, GraphQL, ContextAPI, Stripe, Firebase",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 1646980,
+            "title": "MERN Stack Front To Back: Full Stack React, Redux & Node.js",
+            "url": "/course/mern-stack-front-to-back/",
+            "is_paid": true,
+            "price": "₹9,600",
+            "price_detail": {
+                "amount": 9600,
+                "currency": "INR",
+                "price_string": "₹9,600",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "HiIGP7KVTQifoPMH5OwQ8w",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Brad Traversy",
+                    "name": "Brad",
+                    "display_name": "Brad Traversy",
+                    "job_title": "Full Stack Web Developer & Instructor at Traversy Media",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/21681922_4513_5.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/21681922_4513_5.jpg",
+                    "initials": "BT",
+                    "url": "/user/brad-traversy/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/1646980_23f7_2.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/1646980_23f7_2.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/1646980_23f7_2.jpg",
+            "published_title": "mern-stack-front-to-back",
+            "predictive_score": 5.597727541145277,
+            "relevancy_score": 1387.9415,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Build and deploy a social network with Node.js, Express, React, Redux & MongoDB. Fully updated April 2019",
+            "instructor_name": null
+        },
+        {
+            "_class": "course",
+            "id": 1109926,
+            "title": "GraphQL with React: The Complete Developers Guide",
+            "url": "/course/graphql-with-react-course/",
+            "is_paid": true,
+            "price": "₹9,600",
+            "price_detail": {
+                "amount": 9600,
+                "currency": "INR",
+                "price_string": "₹9,600",
+                "currency_symbol": "₹"
+            },
+            "price_serve_tracking_id": "058gMnoNQ26B-E4l9QZlPg",
+            "visible_instructors": [
+                {
+                    "_class": "user",
+                    "title": "Stephen Grider",
+                    "name": "Stephen",
+                    "display_name": "Stephen Grider",
+                    "job_title": "Engineering Architect",
+                    "image_50x50": "https://img-a.udemycdn.com/user/50x50/5487312_0554.jpg",
+                    "image_100x100": "https://img-a.udemycdn.com/user/100x100/5487312_0554.jpg",
+                    "initials": "SG",
+                    "url": "/user/sgslo/"
+                }
+            ],
+            "image_125_H": "https://img-a.udemycdn.com/course/125_H/1109926_7f97_2.jpg",
+            "image_240x135": "https://img-a.udemycdn.com/course/240x135/1109926_7f97_2.jpg",
+            "is_practice_test_course": false,
+            "image_480x270": "https://img-a.udemycdn.com/course/480x270/1109926_7f97_2.jpg",
+            "published_title": "graphql-with-react-course",
+            "predictive_score": 5.514926969648045,
+            "relevancy_score": 1398.7905,
+            "input_features": null,
+            "lecture_search_result": null,
+            "curriculum_lectures": [],
+            "order_in_results": null,
+            "curriculum_items": [],
+            "headline": "Learn and master GraphQL by building real web apps with React and Node",
+            "instructor_name": null
+        }
+    ],
+    "aggregations": [
+        {
+            "id": "price",
+            "options": [
+                {
+                    "key": "price",
+                    "value": "price-paid",
+                    "count": 2537,
+                    "title": "Paid"
+                },
+                {
+                    "key": "price",
+                    "value": "price-free",
+                    "count": 199,
+                    "title": "Free"
+                }
+            ],
+            "title": "Price"
+        },
+        {
+            "id": "instructional_level",
+            "options": [
+                {
+                    "key": "instructional_level",
+                    "value": "all",
+                    "count": 1214,
+                    "title": "All Levels"
+                },
+                {
+                    "key": "instructional_level",
+                    "value": "beginner",
+                    "count": 913,
+                    "title": "Beginner"
+                },
+                {
+                    "key": "instructional_level",
+                    "value": "intermediate",
+                    "count": 552,
+                    "title": "Intermediate"
+                },
+                {
+                    "key": "instructional_level",
+                    "value": "expert",
+                    "count": 56,
+                    "title": "Expert"
+                }
+            ],
+            "title": "Level"
+        },
+        {
+            "id": "features",
+            "options": [
+                {
+                    "key": "has_closed_caption",
+                    "value": "true",
+                    "count": 1916,
+                    "title": "Captions"
+                },
+                {
+                    "key": "has_simple_quiz",
+                    "value": "true",
+                    "count": 457,
+                    "title": "Quizzes"
+                },
+                {
+                    "key": "has_coding_exercises",
+                    "value": "true",
+                    "count": 49,
+                    "title": "Coding Exercises"
+                }
+            ],
+            "title": "Features"
+        },
+        {
+            "id": "language",
+            "options": [
+                {
+                    "key": "language",
+                    "value": "en",
+                    "count": 1785,
+                    "title": "English"
+                },
+                {
+                    "key": "language",
+                    "value": "pt",
+                    "count": 207,
+                    "title": "Português"
+                },
+                {
+                    "key": "language",
+                    "value": "es",
+                    "count": 169,
+                    "title": "Español"
+                },
+                {
+                    "key": "language",
+                    "value": "fr",
+                    "count": 106,
+                    "title": "Français"
+                },
+                {
+                    "key": "language",
+                    "value": "tr",
+                    "count": 86,
+                    "title": "Türkçe"
+                },
+                {
+                    "key": "language",
+                    "value": "zh",
+                    "count": 85,
+                    "title": "中文"
+                },
+                {
+                    "key": "language",
+                    "value": "ja",
+                    "count": 58,
+                    "title": "日本語"
+                },
+                {
+                    "key": "language",
+                    "value": "ru",
+                    "count": 45,
+                    "title": "Русский"
+                },
+                {
+                    "key": "language",
+                    "value": "th",
+                    "count": 42,
+                    "title": "ภาษาไทย"
+                },
+                {
+                    "key": "language",
+                    "value": "pl",
+                    "count": 41,
+                    "title": "Polski"
+                },
+                {
+                    "key": "language",
+                    "value": "de",
+                    "count": 33,
+                    "title": "Deutsch"
+                },
+                {
+                    "key": "language",
+                    "value": "it",
+                    "count": 26,
+                    "title": "Italiano"
+                },
+                {
+                    "key": "language",
+                    "value": "hi",
+                    "count": 13,
+                    "title": "हिन्दी"
+                },
+                {
+                    "key": "language",
+                    "value": "ar",
+                    "count": 11,
+                    "title": "العربية"
+                },
+                {
+                    "key": "language",
+                    "value": "ko",
+                    "count": 11,
+                    "title": "한국어"
+                },
+                {
+                    "key": "language",
+                    "value": "vi",
+                    "count": 6,
+                    "title": "Tiếng Việt"
+                },
+                {
+                    "key": "language",
+                    "value": "id",
+                    "count": 5,
+                    "title": "Bahasa Indonesia"
+                },
+                {
+                    "key": "language",
+                    "value": "ur",
+                    "count": 4,
+                    "title": "اردو"
+                },
+                {
+                    "key": "language",
+                    "value": "bn",
+                    "count": 1,
+                    "title": "Bangla"
+                },
+                {
+                    "key": "language",
+                    "value": "nl",
+                    "count": 1,
+                    "title": "Nederlands"
+                },
+                {
+                    "key": "language",
+                    "value": "ro",
+                    "count": 1,
+                    "title": "Română"
+                }
+            ],
+            "title": "Language"
+        },
+        {
+            "id": "ratings",
+            "options": [
+                {
+                    "key": "ratings",
+                    "value": "4.5",
+                    "count": 768,
+                    "title": "4.5 & up"
+                },
+                {
+                    "key": "ratings",
+                    "value": "4.0",
+                    "count": 1770,
+                    "title": "4.0 & up"
+                },
+                {
+                    "key": "ratings",
+                    "value": "3.5",
+                    "count": 2202,
+                    "title": "3.5 & up"
+                },
+                {
+                    "key": "ratings",
+                    "value": "3.0",
+                    "count": 2364,
+                    "title": "3.0 & up"
+                }
+            ],
+            "title": "Ratings"
+        },
+        {
+            "id": "duration",
+            "options": [
+                {
+                    "key": "duration",
+                    "value": "short",
+                    "count": 861,
+                    "title": "0-2 Hours"
+                },
+                {
+                    "key": "duration",
+                    "value": "medium",
+                    "count": 838,
+                    "title": "3-6 Hours"
+                },
+                {
+                    "key": "duration",
+                    "value": "long",
+                    "count": 713,
+                    "title": "7-16 Hours"
+                },
+                {
+                    "key": "duration",
+                    "value": "extraLong",
+                    "count": 324,
+                    "title": "17+ Hours"
+                }
+            ],
+            "title": "Duration"
+        }
+    ]
+}
+
+const TEST_UDEMY_COURSE_DATA = {
+    "_class": "course",
+    "id": 1362070,
+    "num_subscribers": 244882,
+    "avg_rating_recent": 4.63441,
+    "estimated_content_length": 2438
+}
+
+
 module.exports = {
     YOUTUBE_API_URL,
     YOUTUBE_MAX_RESULTS,
@@ -1584,5 +2320,7 @@ module.exports = {
     TEST_YOUTUBE_SEARCH_DATA,
     TEST_YOUTUBE_VIDEO_DATA,
     TEST_YOUTUBE_CHANNEL_DATA,
-    TEST_GITHUB_SEARCH_DATA
+    TEST_GITHUB_SEARCH_DATA,
+    TEST_UDEMY_SEARCH_DATA,
+    TEST_UDEMY_COURSE_DATA
 }
