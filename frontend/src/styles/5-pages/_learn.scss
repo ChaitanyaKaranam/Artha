@@ -33,23 +33,7 @@
             text-overflow: ellipsis;
             height: 15rem;
         }
-        // .videoStatistics{
-        //     display: grid;
-        //     grid-auto-flow: column;
-        //     align-items: center;
-        //     color: $grey;
-        //     height: 2rem;
-        //     grid-template-columns: 10rem 10rem;
-        //     div{
-        //         display: grid;
-        //         grid-auto-flow: column;
-        //         grid-template-columns: 2.5rem 3rem;
-        //         align-items: center;
-        //     }
-        //     span{
-        //         font-size: large;
-        //     }
-        //     }
+
          .channelStatistics{
             display: grid;
             grid-auto-flow: column;
@@ -110,6 +94,40 @@
                 span{
                     font-size: small;
                 }
+            }
+        }
+    }
+}
+
+.repoSection{
+    margin-top: $contentDivider;
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 4rem;
+    .repoCard{
+        cursor: pointer;
+        padding: 1rem;
+        background-color: white;
+        box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
+        .header{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-gap: 1rem;
+            align-items: center;
+            font-size: large;
+        }
+        P{
+            height: 5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .statistics{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            span{
+                margin-left: 0.5rem;
             }
         }
     }

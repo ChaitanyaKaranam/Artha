@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import useInput from '../hooks/Input';
-import { searchYoutube, videoData, channelData } from '../api';
+import { searchYoutube, videoData, channelData, searchGithub } from '../api';
 import FeaturedVideo from '../components/youtube/Featured';
 import YoutubeCard from '../components/youtube/YoutubeCard';
+import RepoCard from '../components/github/RepoCard';
 
 const Learn = () => {
     const { id } = useParams();
@@ -13,6 +14,9 @@ const Learn = () => {
             <Hero id={id} />
             <div className="contentSection lightBlue">
                 <Youtube id={id} />
+            </div>
+            <div className="contentSection lightBlue">
+                <Github id={id}/>
             </div>
         </div>
     )
@@ -56,9 +60,9 @@ const Hero = ({ id }) => {
 const Youtube = ({ id }) => {
 
     const [youtubeData, setYoutubeData] = useState({});
-    const [ featuredVideo, setFeaturedVideo ] = useState('');
-    const [ videoDetails, setVideoDetails ] = useState({});
-    const [ channelDetails, setChannelDetails ] = useState({});
+    const [featuredVideo, setFeaturedVideo] = useState('');
+    const [videoDetails, setVideoDetails] = useState({});
+    const [channelDetails, setChannelDetails] = useState({});
 
     // Get Youtube search data
     useEffect(() => {
@@ -78,13 +82,13 @@ const Youtube = ({ id }) => {
                 if (data && Array.isArray(data) && data.length > 0) {
 
                     let item = data[0];
-            
-                    if(!featuredVideo || featuredVideo !== item['id']['videoId']){
+
+                    if (!featuredVideo || featuredVideo !== item['id']['videoId']) {
                         setFeaturedVideo(item['id']['videoId']);
                         if (item['video_details'] && item['video_details']['items'] && Array.isArray(item['video_details']['items']) && item['video_details']['items'].length > 0) {
                             setVideoDetails(formatVideoDetails(item['video_details']));
                         }
-                
+
                         if (item['channel_details'] && item['channel_details']['items'] && Array.isArray(item['channel_details']['items']) && item['channel_details']['items'].length > 0) {
                             setChannelDetails(formatChannelDetails(item['channel_details']))
                         }
@@ -137,11 +141,11 @@ const Youtube = ({ id }) => {
             return youtubeData.map(({ video_details, channel_details }) => {
                 let videoDetails = formatVideoDetails(video_details);
                 let channelDetails = formatChannelDetails(channel_details);
-                return <YoutubeCard key={videoDetails['id']} videoDetails={videoDetails} onClick={() => { 
+                return <YoutubeCard key={videoDetails['id']} videoDetails={videoDetails} onClick={() => {
                     setFeaturedVideo(videoDetails['id']);
                     setVideoDetails(videoDetails);
                     setChannelDetails(channelDetails);
-                }}/>
+                }} />
             })
         } else {
             return <div>Loading...</div>
@@ -161,5 +165,48 @@ const Youtube = ({ id }) => {
         </div>
     )
 }
+
+const Github = ({ id }) => {
+
+    const [ githubData, setGithubData ] = useState({});
+
+    useEffect(() => {
+
+        const fetchData = async() => {
+            let response = await searchGithub(id);
+            console.log(response);
+
+            if(response.data && response.data.items && Array.isArray(response.data.items) && response.data.items.length>0){
+                setGithubData(response.data.items)
+            }
+        }
+
+        fetchData();
+
+    }, [id]);
+
+    function renderRepoCards(){
+        if(githubData && Array.isArray(githubData)){
+            return githubData.map((
+                { id, owner: { avatar_url: thumbnail }, name, description, forks_count: forks, stargazers_count: stars, open_issues: issues, html_url }
+            ) => {
+                return <RepoCard  key={id} thumbnail={thumbnail} name={name} description={description} forks={forks} stars={stars} issues={issues} onClick={() => {
+                    window.open(html_url)
+                }}/>
+            })
+        }
+    }
+
+    return (
+        <div>
+            <h2 className="sectionHeading">Open Source Projects</h2>
+            <p className="sectionSubHeading">Explore open source projects on {id}</p>
+            <div className="repoSection">
+                {renderRepoCards()}
+            </div>
+        </div>
+    )
+}
+
 
 export default Learn;

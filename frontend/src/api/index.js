@@ -12,3 +12,7 @@ export const videoData = async (id) => {
 export const channelData = async (channelId) => {
     return await axios.get(`${BACKEND_URL}/api/youtube/channels?channelId=${channelId}`)
 }
+
+export const searchGithub = async(query) => {
+    return await axios.get(`${BACKEND_URL}/api/github/search/repositories?q=${query}`)
+}
