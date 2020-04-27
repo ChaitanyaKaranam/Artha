@@ -1,7 +1,8 @@
 const { GraphQLString, GraphQLObjectType, GraphQLInt } = require('graphql');
 const axios = require('axios');
-const { YOUTUBE_API_URL } = require('../../../config');
+const { YOUTUBE_API_URL, TEST_YOUTUBE_CHANNEL_DATA, TEST_YOUTUBE_VIDEO_DATA } = require('../../../config');
 const channelDetails = require('./channel');
+const videoDetails = require('./video');
 
 module.exports = new GraphQLObjectType({
     name: 'item',
@@ -67,7 +68,22 @@ module.exports = new GraphQLObjectType({
         channelDetails: {
             type: channelDetails,
             resolve(source, args){
+                if(process.env.NODE_ENV === 'test'){
+                    return TEST_YOUTUBE_CHANNEL_DATA;
+                }
                 return axios.get(`${YOUTUBE_API_URL}/channels?part=snippet%2Cstatistics&key=${process.env.YOUTUBE_API_KEY}&id=${source.snippet.channelId}`)
+                    .then(response => {
+                        return response.data;
+                    })
+            }
+        },
+        videoDetails: {
+            type: videoDetails,
+            resolve(source, args){
+                if(process.env.NODE_ENV === 'test'){
+                    return TEST_YOUTUBE_VIDEO_DATA;
+                }
+                return axios.get(`${YOUTUBE_API_URL}/videos?key=${process.env.YOUTUBE_API_KEY}&part=snippet%2CcontentDetails%2Cstatistics&id=${source.id.videoId}`)
                     .then(response => {
                         return response.data;
                     })

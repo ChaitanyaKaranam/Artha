@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks';
+import { ARTHA_QUERY } from '../queries'
 import useInput from '../hooks/Input';
-import { searchYoutube, videoData, channelData, searchGithub, searchUdemy, getRatings as getCourseRatings } from '../api';
 import FeaturedVideo from '../components/youtube/Featured';
 import YoutubeCard from '../components/youtube/YoutubeCard';
 import RepoCard from '../components/github/RepoCard';
@@ -9,18 +10,25 @@ import CourseCard from '../components/udemy/CourseCard';
 
 const Learn = () => {
     const { id } = useParams();
+    const { loading, error, data } = useQuery(ARTHA_QUERY, {
+        variables:{ search: id},
+        fetchPolicy: "no-cache"
+    });
+    if (loading) return <div>Loading...</div>;
+    if (error) return `Error! ${error}`;
+    console.log(data);
     return (
         <div className="cover">
             <Nav />
             <Hero id={id} />
             <div className="contentSection lightBlue">
-                <Youtube id={id} />
+                <Youtube id={id} youtube={data.youtube}/>
             </div>
             <div className="contentSection lightBlue">
-                <Github id={id}/>
+                <Github id={id} github={data.github}/>
             </div>
             <div className="contentSection lightBlue">
-                <Udemy id={id}/>
+                <Udemy id={id} udemy={data.udemy}/>
             </div>
         </div>
     )
@@ -61,70 +69,24 @@ const Hero = ({ id }) => {
     )
 }
 
-const Youtube = ({ id }) => {
+const Youtube = ({ id, youtube }) => {
 
-    const [youtubeData, setYoutubeData] = useState({});
     const [featuredVideo, setFeaturedVideo] = useState('');
     const [videoDetails, setVideoDetails] = useState({});
     const [channelDetails, setChannelDetails] = useState({});
 
-    // Get Youtube search data
     useEffect(() => {
-        let fetchData = async () => {
-            let response = await searchYoutube(id);
+        setFeaturedVideo(youtube['items'][0]['id']['videoId'])
+        setVideoDetails(formatVideoDetails(youtube['items'][0]['videoDetails'], id));
+        setChannelDetails(formatChannelDetails(youtube['items'][0]['channelDetails']))
+    }, [id, youtube])
 
-            if (response.data && response.data.items && Array.isArray(response.data.items)) {
-                let data = response.data.items;
-                let index = 0;
-                for (const item of data) {
-                    await addVideoDetails(item, data, index);
-                    await addChannelDetails(item, data, index);
-                    index++;
-                }
-                setYoutubeData(data);
-
-                if (data && Array.isArray(data) && data.length > 0) {
-
-                    let item = data[0];
-
-                    if (!featuredVideo || featuredVideo !== item['id']['videoId']) {
-                        setFeaturedVideo(item['id']['videoId']);
-                        if (item['video_details'] && item['video_details']['items'] && Array.isArray(item['video_details']['items']) && item['video_details']['items'].length > 0) {
-                            setVideoDetails(formatVideoDetails(item['video_details']));
-                        }
-
-                        if (item['channel_details'] && item['channel_details']['items'] && Array.isArray(item['channel_details']['items']) && item['channel_details']['items'].length > 0) {
-                            setChannelDetails(formatChannelDetails(item['channel_details']))
-                        }
-                    }
-                }
-
-            }
-        }
-
-        fetchData();
-
-    }, [id, featuredVideo]);
-
-    async function addVideoDetails(item, data, index) {
-        let video_response = await videoData(item.id.videoId);
-        data[index]['video_details'] = video_response.data;
-        return;
-    }
-
-    async function addChannelDetails(item, data, index) {
-        let channel_response = await channelData(item.snippet.channelId);
-        data[index]['channel_details'] = channel_response.data;
-        return;
-    }
-
-    function formatVideoDetails(item) {
+    function formatVideoDetails(item, id) {
         let vd = {};
-        let { snippet, statistics, id } = item['items'][0]
+        let { snippet, statistics } = item['items'][0]
         vd['id'] = id;
         vd['title'] = snippet.title;
-        vd['channelTitle'] = snippet['channelTitle'];
-        vd['description'] = snippet['description'];
+        vd['description'] = snippet.description;
         vd['likeCount'] = statistics['likeCount'];
         vd['viewCount'] = statistics['viewCount'];
         return vd;
@@ -141,14 +103,14 @@ const Youtube = ({ id }) => {
     }
 
     function renderVideos() {
-        if (youtubeData && Array.isArray(youtubeData) && youtubeData.length > 0) {
-            return youtubeData.map(({ video_details, channel_details }) => {
-                let videoDetails = formatVideoDetails(video_details);
-                let channelDetails = formatChannelDetails(channel_details);
-                return <YoutubeCard key={videoDetails['id']} videoDetails={videoDetails} onClick={() => {
-                    setFeaturedVideo(videoDetails['id']);
-                    setVideoDetails(videoDetails);
-                    setChannelDetails(channelDetails);
+        if (youtube && Array.isArray(youtube['items']) && youtube['items'].length > 0) {
+            return youtube['items'].map(({ videoDetails, channelDetails, id: { videoId } }) => {
+                let vd = formatVideoDetails(videoDetails, videoId);
+                let cd = formatChannelDetails(channelDetails);
+                return <YoutubeCard key={videoId} videoDetails={vd} onClick={() => {
+                    setFeaturedVideo(videoId);
+                    setVideoDetails(vd);
+                    setChannelDetails(cd);
                 }} />
             })
         } else {
@@ -170,27 +132,12 @@ const Youtube = ({ id }) => {
     )
 }
 
-const Github = ({ id }) => {
-
-    const [ githubData, setGithubData ] = useState({});
-
-    useEffect(() => {
-
-        const fetchData = async() => {
-            let response = await searchGithub(id);
-            if(response.data && response.data.items && Array.isArray(response.data.items) && response.data.items.length>0){
-                setGithubData(response.data.items)
-            }
-        }
-
-        fetchData();
-
-    }, [id]);
+const Github = ({ id, github }) => {
 
     function renderRepoCards(){
-        if(githubData && Array.isArray(githubData)){
-            return githubData.map((
-                { id, owner: { avatar_url: thumbnail }, name, description, forks_count: forks, stargazers_count: stars, open_issues: issues, html_url }
+        if(github && Array.isArray(github.items)){
+            return github.items.map((
+                { id, owner: { avatar_url: thumbnail }, name, description, forks, stargazers_count: stars, open_issues: issues, html_url }
             ) => {
                 return <RepoCard  key={id} thumbnail={thumbnail} name={name} description={description} forks={forks} stars={stars} issues={issues} onClick={() => {
                     window.open(html_url)
@@ -210,40 +157,16 @@ const Github = ({ id }) => {
     )
 }
 
-const Udemy = ({ id }) => {
-
-    const [ udemyData, setUdemyData ] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async() => {
-            let response = await searchUdemy(id);
-            if(response.data && response.data.results && Array.isArray(response.data.results)){
-                let data = response.data.results;
-                let index = 0;
-                for (const item of data) {
-                    await getRatings(item['id'], data, index);
-                    index++;
-                }
-                setUdemyData(data);
-            }
-        }
-        fetchData();
-    }, [id])
-
-    async function getRatings(id, data, index){
-        let response = await getCourseRatings(id);
-        data[index]['rating_details'] = response.data;
-        return;
-    }
+const Udemy = ({ id, udemy }) => {
 
     function renderCourses(){
-        if(udemyData && Array.isArray(udemyData) && udemyData.length>0){
-            return udemyData.map(({
+        if(udemy.results && Array.isArray(udemy.results) && udemy.results.length>0){
+            return udemy.results.map(({
                 id,
                 image_480x270: thumbnail,
                 title,
                 price,
-                rating_details: {
+                rating: {
                     num_subscribers,
                     avg_rating_recent
                 },

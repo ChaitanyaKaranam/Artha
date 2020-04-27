@@ -14,7 +14,7 @@ export default (props) => {
     return (
         <div className="repoCard" onClick={() => onClick()}>
             <div className="header">
-                <img alt="repo image" src={thumbnail} width={30}/>
+                <img alt="repo" src={thumbnail} width={30}/>
                 <h4>{name}</h4>
             </div>
             <p>{description}</p>

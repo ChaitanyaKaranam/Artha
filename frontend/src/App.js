@@ -6,6 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Learn from './views/Learn';
+import GLearn from './views/GraphQLLearn';
 
 function App() {
   return (
