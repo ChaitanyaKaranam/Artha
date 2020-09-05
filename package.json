@@ -1,0 +1,25 @@
+{
+  "name": "artha",
+  "version": "1.0.0",
+  "description": "Curator for all learning resources",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd frontend && npm install && npm start",
+    "deploy": "cd fronted && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChaitanyaKaranam/Artha.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "graphql",
+    "react",
+    "appolo"
+  ],
+  "author": "Chaitanya Karanam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChaitanyaKaranam/Artha/issues"
+  }
+}
