@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { ARTHA_QUERY } from '../queries'
 import useInput from '../hooks/Input';
@@ -11,25 +11,40 @@ import CourseCard from '../components/udemy/CourseCard';
 const Learn = () => {
     const { id } = useParams();
     const { loading, error, data } = useQuery(ARTHA_QUERY, {
-        variables:{ search: id},
+        variables: { search: id },
         fetchPolicy: "no-cache"
     });
-    if (loading) return <div>Loading...</div>;
-    if (error) return `Error! ${error}`;
-    console.log(data);
+
+
+    function renderContent() {
+        if (loading) {
+            return (
+                <div className="contentSection lightBlue">
+                    <h3>Loading...</h3>
+                </div>
+            )
+        }
+        if (error) return `Error! ${error}`;
+        return (
+            <>
+                <div className="contentSection lightBlue">
+                    <Youtube id={id} youtube={data.youtube} />
+                </div>
+                <div className="contentSection lightBlue">
+                    <Github id={id} github={data.github} />
+                </div>
+                <div className="contentSection lightBlue">
+                    <Udemy id={id} udemy={data.udemy} />
+                </div>
+            </>
+        )
+    }
+
     return (
         <div className="cover">
             <Nav />
             <Hero id={id} />
-            <div className="contentSection lightBlue">
-                <Youtube id={id} youtube={data.youtube}/>
-            </div>
-            <div className="contentSection lightBlue">
-                <Github id={id} github={data.github}/>
-            </div>
-            <div className="contentSection lightBlue">
-                <Udemy id={id} udemy={data.udemy}/>
-            </div>
+            {renderContent()}
         </div>
     )
 }
@@ -44,7 +59,7 @@ const Nav = () => {
     return (
         <nav className="nav">
             <ul>
-                <h2 className="vertical-align-self">Artha</h2>
+                <h2 className="vertical-align-self"><Link to="/">Artha</Link></h2>
                 <form onSubmit={onSubmit} className="vertical-align-self right">
                     <input className="input search search-icon" placeholder="What do you want to learn today?" {...search} />
                 </form>
@@ -71,14 +86,16 @@ const Hero = ({ id }) => {
 
 const Youtube = ({ id, youtube }) => {
 
-    const [featuredVideo, setFeaturedVideo] = useState('');
-    const [videoDetails, setVideoDetails] = useState({});
-    const [channelDetails, setChannelDetails] = useState({});
+    const [featuredVideo, setFeaturedVideo] = useState(null);
+    const [videoDetails, setVideoDetails] = useState(null);
+    const [channelDetails, setChannelDetails] = useState(null);
 
     useEffect(() => {
-        setFeaturedVideo(youtube['items'][0]['id']['videoId'])
-        setVideoDetails(formatVideoDetails(youtube['items'][0]['videoDetails'], id));
-        setChannelDetails(formatChannelDetails(youtube['items'][0]['channelDetails']))
+        if (youtube['items'] && Array.isArray(youtube['items']) && youtube['items'].length > 0) {
+            setFeaturedVideo(youtube['items'][0]['id']['videoId'])
+            setVideoDetails(formatVideoDetails(youtube['items'][0]['videoDetails'], id));
+            setChannelDetails(formatChannelDetails(youtube['items'][0]['channelDetails']))
+        }
     }, [id, youtube])
 
     function formatVideoDetails(item, id) {
@@ -103,7 +120,10 @@ const Youtube = ({ id, youtube }) => {
     }
 
     function renderVideos() {
-        if (youtube && Array.isArray(youtube['items']) && youtube['items'].length > 0) {
+        if (youtube && Array.isArray(youtube['items'])) {
+            if (youtube['items'].length === 0) {
+                return <h3>Cannot find any YouTube Videos on this Topic</h3>
+            }
             return youtube['items'].map(({ videoDetails, channelDetails, id: { videoId } }) => {
                 let vd = formatVideoDetails(videoDetails, videoId);
                 let cd = formatChannelDetails(channelDetails);
@@ -123,7 +143,11 @@ const Youtube = ({ id, youtube }) => {
             <h2 className="sectionHeading">Tutorials</h2>
             <p className="sectionSubHeading">Check out some free tutorials on {id} from YouTube</p>
             <div>
-                <FeaturedVideo videoId={featuredVideo} videoDetails={videoDetails} channelDetails={channelDetails} />
+                {youtube && Array.isArray(youtube['items']) && youtube['items'].length > 0 ?
+                    <FeaturedVideo videoId={featuredVideo} videoDetails={videoDetails} channelDetails={channelDetails} />
+                    :
+                    <></>
+                }
             </div>
             <div className="videosSection sectionDivider">
                 {renderVideos()}
@@ -134,14 +158,17 @@ const Youtube = ({ id, youtube }) => {
 
 const Github = ({ id, github }) => {
 
-    function renderRepoCards(){
-        if(github && Array.isArray(github.items)){
+    function renderRepoCards() {
+        if (github && Array.isArray(github.items)) {
+            if (github.items.length === 0) {
+                return <h3>Cannot find any GitHub repos on this Topic</h3>
+            }
             return github.items.map((
                 { id, owner: { avatar_url: thumbnail }, name, description, forks, stargazers_count: stars, open_issues: issues, html_url }
             ) => {
-                return <RepoCard  key={id} thumbnail={thumbnail} name={name} description={description} forks={forks} stars={stars} issues={issues} onClick={() => {
+                return <RepoCard key={id} thumbnail={thumbnail} name={name} description={description} forks={forks} stars={stars} issues={issues} onClick={() => {
                     window.open(html_url)
-                }}/>
+                }} />
             })
         }
     }
@@ -159,8 +186,8 @@ const Github = ({ id, github }) => {
 
 const Udemy = ({ id, udemy }) => {
 
-    function renderCourses(){
-        if(udemy.results && Array.isArray(udemy.results) && udemy.results.length>0){
+    function renderCourses() {
+        if (udemy.results && Array.isArray(udemy.results) && udemy.results.length > 0) {
             return udemy.results.map(({
                 id,
                 image_480x270: thumbnail,
@@ -172,12 +199,12 @@ const Udemy = ({ id, udemy }) => {
                 },
                 url
             }) => {
-                return <CourseCard key={id} thumbnail={thumbnail} title={title} price={price} num_subscribers={num_subscribers} avg_rating_recent={avg_rating_recent} onClick={() => { window.open(`https://udemy.com${url}`)}}/>
+                return <CourseCard key={id} thumbnail={thumbnail} title={title} price={price} num_subscribers={num_subscribers} avg_rating_recent={avg_rating_recent} onClick={() => { window.open(`https://udemy.com${url}`) }} />
             })
         }
-    }    
+    }
 
-    return(
+    return (
         <div>
             <h2 className="sectionHeading">Courses</h2>
             <p className="sectionSubHeading">Check out some courses on {id} from Udemy</p>

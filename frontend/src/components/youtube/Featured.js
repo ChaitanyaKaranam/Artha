@@ -1,7 +1,7 @@
 import React from 'react';
 import Statistics from './Statistics';
 
-export default ({ videoId, videoDetails, channelDetails }) => {
+const FeaturedVideo = ({ videoId, videoDetails, channelDetails }) => {
     return (
         <div className="featuredVideoSection">
             {
@@ -33,3 +33,5 @@ export default ({ videoId, videoDetails, channelDetails }) => {
         </div>
     )
 }
+
+export default FeaturedVideo;

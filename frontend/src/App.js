@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Learn from './views/Learn';
+// import Learn from './views/Learn';
 import GLearn from './views/GraphQLLearn';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <div className="App cover">
       <Router>
         <Switch>
-          <Route path="/:id" children={<Learn/>}/>
+          <Route path="/:id" children={<GLearn/>}/>
           <Route path="/">
             <Home/>
           </Route>
