@@ -1,6 +1,8 @@
 # Artha
 Place for multiple learning resources
 
+https://artha-app.kchai.tech/
+
 ## Overview
 With Artha, you can get consolidated information of learning resources from these platforms - YouTube, GitHub and Udemy.
 It has REST and GraphQL Backend to serve requests.
