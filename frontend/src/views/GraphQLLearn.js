@@ -16,6 +16,10 @@ const Learn = () => {
     });
 
 
+    function renderError() {
+        if (error) return `Error! ${error}`;
+    }
+
     function renderContent() {
         if (loading) {
             return (
@@ -24,7 +28,7 @@ const Learn = () => {
                 </div>
             )
         }
-        if (error) return `Error! ${error}`;
+    
         return (
             <>
                 <div className="contentSection lightBlue">
@@ -36,6 +40,7 @@ const Learn = () => {
                 <div className="contentSection lightBlue">
                     <Udemy id={id} udemy={data.udemy} />
                 </div>
+                { renderError() }
             </>
         )
     }
